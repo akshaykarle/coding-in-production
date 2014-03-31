@@ -93,6 +93,20 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #   chef.json = { :mysql_password => "foo" }
   # end
 
+  config.vm.provision :chef_solo do |chef|
+    chef.json = {
+      :mysql => {
+        :server_root_password => 'rootpass',
+        :server_debian_password => 'debpass',
+        :server_repl_password => 'replpass'
+      }
+    }
+
+    chef.run_list = [
+      "recipe[coding-in-production::default]"
+    ]
+  end
+
   # Enable provisioning with chef server, specifying the chef server URL,
   # and the path to the validation key (relative to this Vagrantfile).
   #
