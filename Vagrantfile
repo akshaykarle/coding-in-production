@@ -93,6 +93,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #   chef.json = { :mysql_password => "foo" }
   # end
 
+  config.vm.provision :shell,
+    inline: "curl https://opscode.com/chef/install.sh | sudo bash"
+
   config.vm.provision :chef_solo do |chef|
     chef.json = {
       :mysql => {
