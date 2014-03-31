@@ -105,6 +105,12 @@ SCRIPT
 
   config.vm.provision :shell, inline: script
 
+  config.berkshelf.enabled = true
+
+  config.vm.provision :chef_solo do |chef|
+     chef.add_recipe "yum-epel"
+  end
+
   # Enable provisioning with chef server, specifying the chef server URL,
   # and the path to the validation key (relative to this Vagrantfile).
   #
