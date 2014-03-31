@@ -93,8 +93,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #   chef.json = { :mysql_password => "foo" }
   # end
 
-  config.vm.provision :shell,
-    inline: "curl https://opscode.com/chef/install.sh | sudo bash"
+  script = <<SCRIPT
+    WHICH_STATUS_CODE=`which chef-solo; echo $?`
+    if [ WHICH_STATUS_CODE == "1" ]
+    then
+      curl https://opscode.com/chef/install.sh | sudo bash
+    else
+      echo "chef-solo already installed."
+    fi
+SCRIPT
+
+  config.vm.provision :shell, inline: script
 
   # Enable provisioning with chef server, specifying the chef server URL,
   # and the path to the validation key (relative to this Vagrantfile).
