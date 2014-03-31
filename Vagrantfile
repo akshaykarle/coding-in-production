@@ -108,7 +108,7 @@ SCRIPT
   config.berkshelf.enabled = true
 
   config.vm.provision :chef_solo do |chef|
-     chef.add_recipe "yum-epel"
+     chef.add_recipe "docker"
   end
 
   # Enable provisioning with chef server, specifying the chef server URL,
