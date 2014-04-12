@@ -17,3 +17,8 @@ RUN ~/.rbenv/bin/rbenv install 2.1.1
 RUN ~/.rbenv/bin/rbenv global 2.1.1
 RUN ~/.rbenv/bin/rbenv rehash
 RUN ~/.rbenv/shims/gem install berkshelf
+
+RUN ~/.rbenv/bin/rbenv rehash
+ENV PATH /.rbenv/bin:/.rbenv/shims:$PATH
+
+RUN echo "NETWORKING=yes" > /etc/sysconfig/network
