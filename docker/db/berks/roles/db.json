@@ -1,0 +1,19 @@
+{
+  "name": "database",
+  "chef_type": "role",
+  "json_class": "Chef::Role",
+  "description": "The base role for the postgresql server",
+
+  "run_list": [
+    "recipe[postgresql::yum_pgdg_postgresql]",
+    "recipe[postgresql::server]"
+  ],
+
+  "override_attributes": {
+    "postgresql": {
+      "version": "9.3",
+      "enable_pgdg_yum": true,
+      "password": "postgres"
+    }
+  }
+}
