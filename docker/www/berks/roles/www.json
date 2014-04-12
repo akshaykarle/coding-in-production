@@ -1,0 +1,21 @@
+{
+  "name": "webserver",
+  "chef_type": "role",
+  "json_class": "Chef::Role",
+  "description": "The base role for rails web server",
+
+  "run_list": [
+    "recipe[nginx::passenger]",
+    "recipe[nginx]"
+  ],
+
+  "override_attributes": {
+    "nginx": {
+      "passenger": {
+        "packages": {
+          "rhel": ["curl-devel"]
+        }
+      }
+    }
+  }
+}
