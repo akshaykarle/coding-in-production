@@ -101,7 +101,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   script = <<SCRIPT
     WHICH_STATUS_CODE=`which chef-solo; echo $?`
-    if [ WHICH_STATUS_CODE == "1" ]
+    if [ ${WHICH_STATUS_CODE} == "1" ]
     then
       curl https://opscode.com/chef/install.sh | sudo bash
     else
