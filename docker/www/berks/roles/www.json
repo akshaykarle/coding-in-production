@@ -5,12 +5,19 @@
   "description": "The base role for rails web server",
 
   "run_list": [
-    "recipe[nginx::passenger]",
-    "recipe[nginx]"
+    "recipe[nginx::source]"
   ],
 
   "override_attributes": {
     "nginx": {
+      "source": {
+        "modules": [
+          "http_stub_status_module",
+          "http_ssl_module",
+          "http_gzip_static_module",
+          "passenger"
+        ]
+      },
       "passenger": {
         "packages": {
           "rhel": ["curl-devel"]
