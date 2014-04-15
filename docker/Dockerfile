@@ -16,7 +16,8 @@ RUN rbenv install 2.1.1
 
 RUN rbenv global 2.1.1
 
-RUN gem install berkshelf -v 2.0.14
+RUN gem install solve --version 0.8.2
+RUN gem install berkshelf --version 2.0.15
 
 RUN rbenv rehash
 
