@@ -19,6 +19,7 @@
         ]
       },
       "passenger": {
+        "version": "4.0.41",
         "packages": {
           "rhel": ["curl-devel"]
         }
