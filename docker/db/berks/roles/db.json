@@ -13,7 +13,17 @@
     "postgresql": {
       "version": "9.3",
       "enable_pgdg_yum": true,
-      "password": "postgres"
+      "password": "postgres",
+      "config": {
+        "listen_addresses": "*"
+      },
+      "pg_hba": {
+        "type": "host",
+        "db": "all",
+        "user": "all",
+        "addr": "0.0.0.0/0",
+        "method": "password"
+      }
     }
   }
 }
