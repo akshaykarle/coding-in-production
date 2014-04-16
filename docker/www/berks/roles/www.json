@@ -5,7 +5,9 @@
   "description": "The base role for rails web server",
 
   "run_list": [
-    "recipe[nginx::source]"
+    "recipe[nginx::source]",
+    "recipe[postgresql::yum_pgdg_postgresql]",
+    "recipe[postgresql]"
   ],
 
   "override_attributes": {
@@ -24,6 +26,11 @@
           "rhel": ["curl-devel"]
         }
       }
+    },
+    "postgresql": {
+      "version": "9.3",
+      "enable_pgdg_yum": true,
+      "password": "postgres"
     }
   }
 }
