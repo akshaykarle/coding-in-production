@@ -11,6 +11,7 @@ ENV PATH /.rbenv/bin:/.rbenv/shims:$PATH
 RUN rbenv install 2.1.1
 
 RUN rbenv global 2.1.1
+RUN gem install rake --force --no-ri --no-rdoc
 RUN rbenv rehash
 
 ADD berks /berkshelf
