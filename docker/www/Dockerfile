@@ -1,8 +1,19 @@
-FROM centos-berkshelf
+FROM centos-chef-solo
+
+RUN git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
+RUN echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile
+RUN echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
+
+RUN git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+RUN yum install -y gcc
+RUN yum install openssl openssl-devel -y
+ENV PATH /.rbenv/bin:/.rbenv/shims:$PATH
+RUN rbenv install 2.1.1
+
+RUN rbenv global 2.1.1
+RUN rbenv rehash
 
 ADD berks /berkshelf
-
-RUN cd berkshelf; berks install --path /berkshelf/cookbooks
 
 RUN mkdir -p /var/log/chef
 RUN gem update rake --force
