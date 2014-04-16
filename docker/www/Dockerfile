@@ -16,6 +16,14 @@ RUN rbenv rehash
 ADD berks /berkshelf
 
 RUN mkdir -p /var/log/chef
-RUN gem update rake --force
 RUN mkdir -p /etc/nginx/conf.d
 RUN chef-solo -c berkshelf/solo.rb -o "role[www]"
+
+RUN gem install bundler --no-ri --no-rdoc
+RUN rbenv rehash
+
+ADD nginx.conf /etc/nginx/sites-available/default
+
+EXPOSE 80
+
+RUN /etc/init.d/nginx restart
