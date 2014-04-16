@@ -7,4 +7,4 @@ RUN chef-solo -c /berkshelf/solo.rb -o "role[db]"
 
 EXPOSE 5432
 
-CMD /etc/init.d/postgresql-9.3 start
+CMD su postgres -c '/usr/pgsql-9.3/bin/pg_ctl start -D /var/lib/pgsql/9.3/data/'
