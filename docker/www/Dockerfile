@@ -27,4 +27,5 @@ ADD nginx.conf /etc/nginx/sites-available/default
 
 EXPOSE 80
 
-RUN /etc/init.d/nginx restart
+ENV PATH /.rbenv/bin:/.rbenv/shims:/usr/pgsql-9.3/bin:$PATH
+CMD service nginx start
