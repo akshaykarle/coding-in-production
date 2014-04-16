@@ -12,10 +12,10 @@
     "nginx": {
       "source": {
         "modules": [
-          "http_stub_status_module",
-          "http_ssl_module",
-          "http_gzip_static_module",
-          "passenger"
+          "nginx::http_stub_status_module",
+          "nginx::http_ssl_module",
+          "nginx::http_gzip_static_module",
+          "nginx::passenger"
         ]
       },
       "passenger": {
