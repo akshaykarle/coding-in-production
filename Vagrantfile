@@ -112,7 +112,7 @@ SCRIPT
   config.vm.provision :shell, inline: script
 
   config.vm.provision :chef_solo do |chef|
-    chef.cookbook_path "cookbooks"
+    chef.cookbooks_path "cookbooks"
     chef.add_recipe "docker"
     chef.add_recipe "nfs"
   end
