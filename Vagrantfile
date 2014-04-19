@@ -113,7 +113,6 @@ SCRIPT
 
   config.vm.provision :chef_solo do |chef|
     chef.add_recipe "docker"
-    chef.add_recipe "nfs"
   end
 
   # Enable provisioning with chef server, specifying the chef server URL,
