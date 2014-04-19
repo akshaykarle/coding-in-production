@@ -14,11 +14,11 @@ RUN rbenv global 2.1.1
 RUN gem install rake --force --no-ri --no-rdoc
 RUN rbenv rehash
 
-ADD berks /berkshelf
+ADD chef /chef
 
 RUN mkdir -p /var/log/chef
 RUN mkdir -p /etc/nginx/conf.d
-RUN chef-solo -c berkshelf/solo.rb -o "role[www]"
+RUN chef-solo -c chef/solo.rb -o "role[www]"
 
 RUN gem install bundler --no-ri --no-rdoc
 RUN rbenv rehash

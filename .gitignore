@@ -14,3 +14,6 @@ bin/*
 vendor/bundle
 
 .idea
+.librarian
+tmp
+Cheffile.lock
