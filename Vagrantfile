@@ -111,11 +111,10 @@ SCRIPT
 
   config.vm.provision :shell, inline: script
 
-  config.berkshelf.enabled = true
-
   config.vm.provision :chef_solo do |chef|
-     chef.add_recipe "docker"
-     chef.add_recipe "nfs"
+    chef.cookbook_path "cookbooks"
+    chef.add_recipe "docker"
+    chef.add_recipe "nfs"
   end
 
   # Enable provisioning with chef server, specifying the chef server URL,
