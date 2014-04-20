@@ -7,6 +7,7 @@ RUN echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
 RUN git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
 RUN yum install -y gcc
 RUN yum install openssl openssl-devel -y
+RUN yum install tar -y
 ENV PATH /.rbenv/bin:/.rbenv/shims:$PATH
 RUN rbenv install 2.1.1
 
