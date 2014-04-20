@@ -12,6 +12,7 @@ RUN rbenv install 2.1.1
 
 RUN rbenv global 2.1.1
 RUN gem install rake --force --no-ri --no-rdoc
+RUN gem install bundler --no-ri --no-rdoc
 RUN rbenv rehash
 
 ADD chef /chef
@@ -20,12 +21,10 @@ RUN mkdir -p /var/log/chef
 RUN mkdir -p /etc/nginx/conf.d
 RUN chef-solo -c chef/solo.rb -o "role[www]"
 
-RUN gem install bundler --no-ri --no-rdoc
-RUN rbenv rehash
+ENV PATH /.rbenv/bin:/.rbenv/shims:/usr/pgsql-9.3/bin:$PATH
 
 ADD nginx.conf /etc/nginx/sites-available/default
 
 EXPOSE 80
 
-ENV PATH /.rbenv/bin:/.rbenv/shims:/usr/pgsql-9.3/bin:$PATH
 CMD service nginx start
