@@ -17,3 +17,6 @@ vendor/bundle
 .librarian
 tmp
 Cheffile.lock
+
+app
+boxes
