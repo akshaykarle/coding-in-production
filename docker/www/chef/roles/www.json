@@ -5,29 +5,12 @@
   "description": "The base role for rails web server",
 
   "run_list": [
-    "recipe[nginx::source]",
     "recipe[postgresql::yum_pgdg_postgresql]",
     "recipe[postgresql]",
     "recipe[nodejs]"
   ],
 
   "override_attributes": {
-    "nginx": {
-      "source": {
-        "modules": [
-          "nginx::http_stub_status_module",
-          "nginx::http_ssl_module",
-          "nginx::http_gzip_static_module",
-          "nginx::passenger"
-        ]
-      },
-      "passenger": {
-        "version": "4.0.41",
-        "packages": {
-          "rhel": ["curl-devel"]
-        }
-      }
-    },
     "postgresql": {
       "version": "9.3",
       "enable_pgdg_yum": true,

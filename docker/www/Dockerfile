@@ -23,9 +23,3 @@ RUN mkdir -p /etc/nginx/conf.d
 RUN chef-solo -c chef/solo.rb -o "role[www]"
 
 ENV PATH /.rbenv/bin:/.rbenv/shims:/usr/pgsql-9.3/bin:$PATH
-
-ADD nginx.conf /etc/nginx/sites-available/default
-
-EXPOSE 80
-
-CMD service nginx start
